@@ -16,7 +16,7 @@ let num = 0
 
 app.use((req, res, next) => {
   const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress
-  const currentTime = new Date().toLocaleString()
+  const currentTime = new Date().toISOString().replace('T', ' ').split('.')[0].replace(/-/g, '/')
 
   ipRequestCount[clientIp] = (ipRequestCount[clientIp] || 0) + 1
   num++
