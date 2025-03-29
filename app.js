@@ -12,14 +12,16 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const ipRequestCount = {}
+let num = 0
 
 app.use((req, res, next) => {
   const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress
   const currentTime = new Date().toLocaleString()
 
   ipRequestCount[clientIp] = (ipRequestCount[clientIp] || 0) + 1
+  num++
 
-  console.log(`\x1b[32m[${currentTime}]\x1b[0m 请求路径 ${req.path}, 请求方法 ${req.method}, 请求IP ${clientIp}, 请求次数 ${ipRequestCount[clientIp]}`)
+  console.log(`\x1b[32m[${currentTime}]\x1b[0m 请求路径 ${req.path}, 请求方法 ${req.method}, 请求IP ${clientIp}, 请求次数 ${ipRequestCount[clientIp]}, 总请求次数 ${num}`)
   next()
 })
 
