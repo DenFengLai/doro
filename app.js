@@ -38,9 +38,12 @@ app.get('/', (req, res) => {
 
 app.get('/get', (req, res) => {
   const randomEnding = _.sample(ending)
-  randomEnding.image = `${pubURL}/${randomEnding.image}`
-  res.send(randomEnding)
+  const data = { ...randomEnding }
+  data.image = `${pubURL}/${randomEnding.image}`
+
+  res.send(data)
 })
+
 
 app.get('/ending/:fileName', (req, res) => {
   const fileName = req.params.fileName
