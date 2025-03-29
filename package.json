@@ -1,0 +1,22 @@
+{
+  "name": "doro-today-api",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "node .",
+    "start": "pm2 start config/pm2.yaml",
+    "stop": "pm2 stop config/pm2.yaml",
+    "restart": "pm2 restart config/pm2.yaml",
+    "log": "pm2 log --lines 100"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2",
+    "lodash": "^4.17.21",
+    "pm2": "^6.0.5"
+  }
+}
