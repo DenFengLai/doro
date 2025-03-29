@@ -21,7 +21,7 @@ app.use((req, res, next) => {
   ipRequestCount[clientIp] = (ipRequestCount[clientIp] || 0) + 1
   num++
 
-  console.log(`\x1b[32m[${currentTime}]\x1b[0m 请求路径 ${req.path}, 请求方法 ${req.method}, 请求IP ${clientIp}, 请求次数 ${ipRequestCount[clientIp]}, 总请求次数 ${num}`)
+  console.log(`\x1b[32m[${currentTime}]\x1b[0m 请求路径 ${req.path}, 请求方法 ${req.method}, 请求IP ${clientIp}, 请求次数 ${ipRequestCount[clientIp]}, 总请求次数 ${num}, 总IP数 ${Object.keys(ipRequestCount).length}`)
   next()
 })
 
