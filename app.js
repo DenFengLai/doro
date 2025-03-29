@@ -4,7 +4,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import ending from './ending.js'
 import _ from 'lodash'
-import { port, baseURL } from './config/config.js'
+import { port, baseURL, pubURL } from './config/config.js'
 
 const app = express()
 
@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 
 app.get('/get', (req, res) => {
   const randomEnding = _.sample(ending)
-  randomEnding.image = `${baseURL}/${randomEnding.image}`
+  randomEnding.image = `${pubURL}/${randomEnding.image}`
   res.send(randomEnding)
 })
 
@@ -56,5 +56,5 @@ app.get('/ending/:fileName', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`服务器正在运行 ${baseURL}`)
+  console.log(`服务正在运行 ${baseURL}`)
 })
