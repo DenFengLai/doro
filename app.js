@@ -3,6 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import ending from './ending.js'
+import moment from "moment"
 import _ from 'lodash'
 import { port, baseURL, pubURL } from './config/config.js'
 
@@ -16,7 +17,7 @@ let num = 0
 
 app.use((req, res, next) => {
   const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress
-  const currentTime = new Date().toISOString().replace('T', ' ').split('.')[0].replace(/-/g, '/')
+  const currentTime = moment().format("YYYY/MM/DD HH:mm:ss")
 
   ipRequestCount[clientIp] = (ipRequestCount[clientIp] || 0) + 1
   num++
